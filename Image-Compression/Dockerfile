@@ -31,8 +31,8 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 RUN chmod -R 775 storage bootstrap/cache || true
 
 # Expose port untuk Laravel dev server
-EXPOSE 8001
+EXPOSE 8000
 
 # Jalankan Laravel menggunakan built-in PHP server
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8001"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
 

@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageCompressionController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('form');
 });
+
+Route::post('/compress',[ImageCompressionController::class, 'compress'])->name('compress');

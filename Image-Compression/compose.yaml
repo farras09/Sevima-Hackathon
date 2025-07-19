@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8001:8000"
+      - "8000:8000"
     volumes:
       - .:/var/www/html
     depends_on:
@@ -16,7 +16,7 @@ services:
       - DB_CONNECTION=pgsql
       - DB_HOST=db
       - DB_PORT=5432
-      - DB_DATABASE=personal_finance
+      - DB_DATABASE=image_compression
       - DB_USERNAME=sevima
       - DB_PASSWORD=sevima
 
@@ -31,7 +31,7 @@ services:
     environment:
       - POSTGRES_USER=sevima
       - POSTGRES_PASSWORD=sevima
-      - POSTGRES_DB=route_planner
+      - POSTGRES_DB=image_compression
 
   pgadmin:
     image: dpage/pgadmin4

@@ -1,0 +1,54 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - app-network
+    environment:
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=route_planner
+      - DB_USERNAME=sevima
+      - DB_PASSWORD=sevima
+
+  db:
+    image: postgres:17
+    ports:
+      - "5433:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    environment:
+      - POSTGRES_USER=sevima
+      - POSTGRES_PASSWORD=sevima
+      - POSTGRES_DB=route_planner
+
+  pgadmin:
+    image: dpage/pgadmin4
+    # restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: sevima@master.com
+      PGADMIN_DEFAULT_PASSWORD: sevima
+    ports:
+      - "5051:80"  # Changed from 5050 to 5051
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge

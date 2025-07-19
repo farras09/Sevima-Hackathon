@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('nama_rute', 100);
             $table->smallInteger('halte_id_asal');
             $table->smallInteger('halte_id_tujuan');
-            $table->smallInteger('jumlah_rute');
-            $table->smallInteger('jumlah_armada');
+            $table->string('halte_id_transit')->nullable();
+            $table->smallInteger('jarak_tempuh')->nullable();
+            $table->smallInteger('jumlah_armada')->nullable();
             $table->timestamps();
         });
     }

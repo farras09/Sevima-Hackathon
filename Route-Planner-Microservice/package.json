@@ -18,6 +18,11 @@
     "dependencies": {
         "@inertiajs/vue3": "^2.0.17",
         "boostrap": "^2.0.0",
-        "bootstrap": "^5.3.7"
+        "bootstrap": "^5.3.7",
+        "leaflet": "^1.9.4",
+        "ol": "^10.6.1",
+        "ol-contextmenu": "^5.5.0",
+        "ol-ext": "^4.0.33",
+        "vue3-openlayers": "^11.6.2"
     }
 }

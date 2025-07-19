@@ -41,10 +41,10 @@ class RuteSeeder extends Seeder
         ]);
         DB::table('rute')->insert([
             'nama_rute'            => "Rute 7",
-            'halte_id_asal'        => 5,
+            'halte_id_asal'        => 8,
             'halte_id_transit'     => "9,10",
 
-            'halte_id_tujuan'      => 6,
+            'halte_id_tujuan'      => 11,
             'jarak_tempuh'         => null,
             'jumlah_armada'        => 4,
         ]);

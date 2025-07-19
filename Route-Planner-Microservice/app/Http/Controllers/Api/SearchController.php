@@ -47,16 +47,15 @@ class SearchController extends Controller
                         foreach ($break_karakter as $transit) {
                             $bus_stop = $transit;
                             // echo $bus_stop;
-                            $halte_stop     = Halte::find($bus_stop);
-                            $koordinat_stop = [
+                            $halte_stop       = Halte::find($bus_stop);
+                            $koordinat_stop[] = [
                                 "nama_halte" => $halte_stop->nama_halte,
                                 "latitude"   => $halte_stop->latitude,
                                 "longitude"  => $halte_stop->longitude,
 
                             ];
                             // echo $koordinat_stop;
-
-                        }
+                            }
                     }
                 }
             }
@@ -73,11 +72,18 @@ class SearchController extends Controller
 
             ];
             return response()->json([
-'koordinat_awal' => $koordinat_awal,
-'koordinat_akhir' => $koordinat_akhir,
+                'koordinat_awal'  => $koordinat_awal,
+                'koordinat_akhir' => $koordinat_akhir,
+                'koordinat_stop'  => $koordinat_stop,
+                'status' => 1
             ]);
         } else {
-            return response()->json('Rute Tidak Ditemukan');
+            return response()->json(
+                [
+                    'status' =>0,
+                    'pesan' =>'  Rute Tidak Ditemukan'
+                ]
+              );
         }
         // $query = DB::table('rute')->get();
         // return $this->Djikstra($rute, $awal);
